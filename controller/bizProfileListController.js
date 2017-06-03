@@ -22,20 +22,20 @@ function handleResult(err, res, bizs){
 	return res.json(bizs);
 }
 
-function findProductCategory(productName, callback){
+// function findProductCategory(productName, callback){
 
-	// find searched product category	
-	// returns a Promise.
-	// return 				
+// 	// find searched product category	
+// 	// returns a Promise.
+// 	// return 				
 
-	// findOne query is asyc.
-	// so below console statement will execute before findOne return an Object
-	// before getting object category is in circular structure 
-	// which cannot be converted to string via JSON.stringify. OOPS!
-	// --- console.log("category " + JSON.stringify(category));
+// 	// findOne query is asyc.
+// 	// so below console statement will execute before findOne return an Object
+// 	// before getting object category is in circular structure 
+// 	// which cannot be converted to string via JSON.stringify. OOPS!
+// 	// --- console.log("category " + JSON.stringify(category));
 
-	// return category;
-}
+// 	// return category;
+// }
 
 //-- list all bizs
 //-- list bizs by catergory
