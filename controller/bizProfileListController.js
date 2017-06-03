@@ -96,6 +96,7 @@ exports.addBiz = (req, res) => {
 		// req.body["category.product"] = JSON.parse(req.body["category.product"]);
 		// var allproducts = req.body["category.product"];
 		// console.log(typeof req.body.products);
+		console.log(req.body);
 	var allproducts = JSON.parse(req.body.products);
 	var allCategories = [];
 
