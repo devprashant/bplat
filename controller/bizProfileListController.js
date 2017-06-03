@@ -44,10 +44,10 @@ function handleResult(err, res, bizs){
 // ------ 
 
 
-exports.listBizs = (req, res) => {
+// exports.listBizs = (req, res) => {
 
-	return BizProfile.find({}, (err, bizs) => { return handleResult(err, res, bizs); });
-};
+// 	return BizProfile.find({}, (err, bizs) => { return handleResult(err, res, bizs); });
+// };
 
 // exports.listBizsByCategory = (req, res) => {
 
@@ -90,65 +90,65 @@ exports.listByQuery = (req, res) => {
 }
 
 // admin access only
-exports.addBiz = (req, res) => {
+// exports.addBiz = (req, res) => {
 
-	// array data received from input field is in text. conveting to array again before storing
-		// req.body["category.product"] = JSON.parse(req.body["category.product"]);
-		// var allproducts = req.body["category.product"];
-		// console.log(typeof req.body.products);
-		console.log(req.body);
-	var allproducts = JSON.parse(req.body.products);
-	var allCategories = [];
+// 	// array data received from input field is in text. conveting to array again before storing
+// 		// req.body["category.product"] = JSON.parse(req.body["category.product"]);
+// 		// var allproducts = req.body["category.product"];
+// 		// console.log(typeof req.body.products);
+// 		console.log(req.body);
+// 	var allproducts = JSON.parse(req.body.products);
+// 	var allCategories = [];
 
-	// console.log('all cat before' + JSON.stringify(allCategories));
+// 	// console.log('all cat before' + JSON.stringify(allCategories));
 
-	var index = 0;
-	allproducts
-		.map((name) => { 
+// 	var index = 0;
+// 	allproducts
+// 		.map((name) => { 
 
-				// findProductCategory(productname, callback)
-				ProductProfile.findOne({name}).exec()
-					// then add category to product category array allCategories[]
-					.then(prodProfile => {
+// 				// findProductCategory(productname, callback)
+// 				ProductProfile.findOne({name}).exec()
+// 					// then add category to product category array allCategories[]
+// 					.then(prodProfile => {
 						
-						// if category for a product not found
-						// return with server error.
+// 						// if category for a product not found
+// 						// return with server error.
 
-						if(!prodProfile) return handleResult("no category found", res,null);
+// 						if(!prodProfile) return handleResult("no category found", res,null);
 						
-						var prodCategory = prodProfile.category;
+// 						var prodCategory = prodProfile.category;
 		 				
-		 				// console.log("category " + JSON.stringify(prodCategory));
+// 		 				// console.log("category " + JSON.stringify(prodCategory));
 
-		 				// make sure allCategories array have unique values
-		 				if(!allCategories.includes(prodCategory)){
-		 					allCategories.push(prodCategory)
-		 				}
+// 		 				// make sure allCategories array have unique values
+// 		 				if(!allCategories.includes(prodCategory)){
+// 		 					allCategories.push(prodCategory)
+// 		 				}
 
-		 				// run when categories of all products are classified.
-						if(index === allproducts.length-1){
-							// console.log('all cat after' + JSON.stringify(allCategories));
-							// console.log(' allproducts ' + allproducts);
-							// req.body.coordinates = JSON.parse(req.body.coordinates);
-							// console.log(req.body);
-							var bizObj = {
-								name: req.body.name,
-								coordinates: JSON.parse(req.body.coordinates),
-								city: req.body.city,
-								area: req.body.area,
-								category: allCategories,
-								products: allproducts
-							}
+// 		 				// run when categories of all products are classified.
+// 						if(index === allproducts.length-1){
+// 							// console.log('all cat after' + JSON.stringify(allCategories));
+// 							// console.log(' allproducts ' + allproducts);
+// 							// req.body.coordinates = JSON.parse(req.body.coordinates);
+// 							// console.log(req.body);
+// 							var bizObj = {
+// 								name: req.body.name,
+// 								coordinates: JSON.parse(req.body.coordinates),
+// 								city: req.body.city,
+// 								area: req.body.area,
+// 								category: allCategories,
+// 								products: allproducts
+// 							}
 
-							var addBizProfile = new BizProfile(bizObj);
-							addBizProfile.save((err, biz) => handleResult(err, res, biz));
-						}
+// 							var addBizProfile = new BizProfile(bizObj);
+// 							addBizProfile.save((err, biz) => handleResult(err, res, biz));
+// 						}
 
-						index++;
-		 			})	 		 		
-					.catch(err => {
-						console.log(err);
-						console.log(err.message);
-					});
-		});	
-}
+// 						index++;
+// 		 			})	 		 		
+// 					.catch(err => {
+// 						console.log(err);
+// 						console.log(err.message);
+// 					});
+// 		});	
+// }
