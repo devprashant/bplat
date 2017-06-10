@@ -8,14 +8,11 @@ var logger = require('morgan');
 mongoose.connect('mongodb://localhost:27017/bplat');
 
 var port = process.env.PORT || 3000;
-
 var app = express();
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-
-// app.use(express.static(path.join(__dirname, 'public')));
 
 appRouter(app);
 
