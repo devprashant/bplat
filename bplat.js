@@ -5,7 +5,7 @@ var appRouter = require('./routes');
 var mongoose = require('mongoose');
 var logger = require('morgan');
 
-mongoose.connect('mongodb://localhost:27017/bplat');
+mongoose.connect(process.env.MONGODB_URL);
 
 var port = process.env.PORT || 3000;
 var app = express();
